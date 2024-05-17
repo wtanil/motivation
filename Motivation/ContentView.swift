@@ -10,10 +10,37 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Spacer()
+            HStack {
+                Text("Are you closer to your goal?")
+            }
+            Spacer()
+            HStack {
+                Spacer()
+                Button {
+                    // do something
+                } label: {
+                    Text("Yes")
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(Color.black)
+                        .background(Color.green)
+                        .clipShape(Circle())
+                }
+                
+                Spacer()
+                Button {
+                    // do something
+                } label: {
+                    Text("No")
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(Color.black)
+                        .background(Color.green)
+                        .clipShape(Circle())
+                }
+                
+                Spacer()
+            }
+            Spacer()
         }
         .padding()
     }
