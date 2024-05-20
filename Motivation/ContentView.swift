@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    //    @AppStorage("lastConfirmedDate") private var lastConfirmedDate = Date()
+    @State private var showingNoAlert = false
+    
     var body: some View {
         VStack {
             Spacer()
@@ -19,23 +23,25 @@ struct ContentView: View {
                 Spacer()
                 Button {
                     // do something
+                    // word of
                 } label: {
                     Text("Yes")
                         .frame(width: 100, height: 100)
                         .foregroundColor(Color.black)
                         .background(Color.green)
-                        .clipShape(Circle())
+                        .clipShape(Rectangle())
                 }
                 
                 Spacer()
                 Button {
                     // do something
+                    showingNoAlert.toggle()
                 } label: {
                     Text("No")
                         .frame(width: 100, height: 100)
                         .foregroundColor(Color.black)
                         .background(Color.green)
-                        .clipShape(Circle())
+                        .clipShape(Rectangle())
                 }
                 
                 Spacer()
@@ -43,6 +49,17 @@ struct ContentView: View {
             Spacer()
         }
         .padding()
+        .alert(isPresented:$showingNoAlert) {
+            Alert(
+                title: Text("Title"),
+                message: Text("Message"),
+                primaryButton: .default(Text("Yes")) {
+                    // do something
+                },
+                secondaryButton: .cancel()
+            )
+        }
+        
     }
 }
 
