@@ -10,6 +10,9 @@ import SwiftUI
 struct ContentView: View {
     
     //    @AppStorage("lastConfirmedDate") private var lastConfirmedDate = Date()
+    @AppStorage("countOfYes") private var countOfYes = 0
+    @AppStorage("countOfNo") private var countOfNo = 0
+    @AppStorage("totalCount") private var totalCount = 0
     @State private var showingAlert = false
     @State private var alertType = true
     
@@ -17,7 +20,11 @@ struct ContentView: View {
         VStack {
             Spacer()
             HStack {
-                Text("Are you closer to your goal?")
+                VStack {
+                    Text("Are you closer to your goal?")
+//                    Text("yes: \(countOfYes) no: \(countOfNo) total: \(totalCount)")
+                }
+                
             }
             Spacer()
             HStack {
@@ -26,6 +33,8 @@ struct ContentView: View {
                     // do something
                     // word of
                     self.alertType = true
+                    self.countOfYes += 1
+                    self.totalCount += 1
                     showingAlert.toggle()
                 } label: {
                     Text("Yes")
@@ -39,6 +48,8 @@ struct ContentView: View {
                 Button {
                     // do something
                     self.alertType = false
+                    self.countOfNo += 1
+                    self.totalCount += 1
                     showingAlert.toggle()
                 } label: {
                     Text("No")
