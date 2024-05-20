@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     //    @AppStorage("lastConfirmedDate") private var lastConfirmedDate = Date()
-    @State private var showingNoAlert = false
+    @State private var showingAlert = false
+    @State private var alertType = true
     
     var body: some View {
         VStack {
@@ -24,6 +25,8 @@ struct ContentView: View {
                 Button {
                     // do something
                     // word of
+                    self.alertType = true
+                    showingAlert.toggle()
                 } label: {
                     Text("Yes")
                         .frame(width: 100, height: 100)
@@ -35,7 +38,8 @@ struct ContentView: View {
                 Spacer()
                 Button {
                     // do something
-                    showingNoAlert.toggle()
+                    self.alertType = false
+                    showingAlert.toggle()
                 } label: {
                     Text("No")
                         .frame(width: 100, height: 100)
@@ -49,16 +53,23 @@ struct ContentView: View {
             Spacer()
         }
         .padding()
-        .alert(isPresented:$showingNoAlert) {
-            Alert(
-                title: Text("Title"),
-                message: Text("Message"),
-                primaryButton: .default(Text("Yes")) {
-                    // do something
-                },
-                secondaryButton: .cancel()
-            )
+        .alert(isPresented:$showingAlert) {
+            switch alertType {
+                case true:
+                    return Alert(title: Text("Title"), message: Text("Message"), dismissButton: .default(Text("Ok")))
+                case false:
+                    return Alert(title: Text("Title"),
+                                 message: Text("Message"),
+                                 primaryButton: .default(Text("Yes")) {
+                        // do something
+                    },
+                                 secondaryButton: .cancel()
+                    )
+                    
+            }
+            
         }
+        
         
     }
 }
