@@ -23,44 +23,23 @@ struct ContentView: View {
             HStack {
                 VStack {
                     Text("Are you closer to your goal?")
-                    Text("yes: \(countOfYes) no: \(countOfNo) total: \(totalCount)")
-                    Text("isToday: \(isToday(convertIntervalToDate(storedDate)) ? "true" : "false") lastDate: \(convertIntervalToDate(storedDate))")
-                    Button {
-                        self.countOfNo = 0
-                        self.countOfYes = 0
-                        self.totalCount = 0
-                        self.storedDate = Double(0)
-                    } label: {
-                        Text("reset")
-                    }
-
+                    helperSection
                 }
                 
             }
             Spacer()
             HStack {
                 Spacer()
-                Button {
-                    yesAction()
-//                    self.lastDate = Date()
-                } label: {
+                Button { yesAction() } label: {
                     Text("Yes")
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(Color.black)
-                        .background(Color.green)
-                        .clipShape(Rectangle())
+                        .modifier(ButtonViewModifier())
                 }
                 .disabled(isToday(convertIntervalToDate(storedDate)))
                 
                 Spacer()
-                Button {
-                    noAction()
-                } label: {
+                Button { noAction() } label: {
                     Text("No")
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(Color.black)
-                        .background(Color.green)
-                        .clipShape(Rectangle())
+                        .modifier(ButtonViewModifier())
                 }
                 .disabled(isToday(convertIntervalToDate(storedDate)))
                 
@@ -119,6 +98,23 @@ struct ContentView: View {
         self.alertType = false
         
         showingAlert.toggle()
+    }
+    
+    private var helperSection: some View {
+        
+        VStack {
+            Text("yes: \(countOfYes) no: \(countOfNo) total: \(totalCount)")
+            Text("isToday: \(isToday(convertIntervalToDate(storedDate)) ? "true" : "false") lastDate: \(convertIntervalToDate(storedDate))")
+            Button {
+                self.countOfNo = 0
+                self.countOfYes = 0
+                self.totalCount = 0
+                self.storedDate = Double(0)
+            } label: {
+                Text("reset")
+            }
+        }
+        
     }
 }
 
