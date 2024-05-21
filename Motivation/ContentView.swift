@@ -18,6 +18,8 @@ struct ContentView: View {
     @State private var alertType = true
     
     var body: some View {
+        
+        var shouldDisable = isToday(convertIntervalToDate(storedDate))
         VStack {
             Spacer()
             HStack {
@@ -32,16 +34,14 @@ struct ContentView: View {
                 Spacer()
                 Button { yesAction() } label: {
                     Text("Yes")
-                        .modifier(ButtonViewModifier())
+                        .modifier(ButtonViewModifier(shouldDisable: shouldDisable))
                 }
-                .disabled(isToday(convertIntervalToDate(storedDate)))
                 
                 Spacer()
                 Button { noAction() } label: {
                     Text("No")
-                        .modifier(ButtonViewModifier())
+                        .modifier(ButtonViewModifier(shouldDisable: shouldDisable))
                 }
-                .disabled(isToday(convertIntervalToDate(storedDate)))
                 
                 Spacer()
             }

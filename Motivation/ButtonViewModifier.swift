@@ -9,11 +9,15 @@ import Foundation
 import SwiftUI
 
 struct ButtonViewModifier: ViewModifier {
+    
+    let shouldDisable: Bool
+    
     func body(content: Content) -> some View {
         content
             .frame(width: 100, height: 100)
             .foregroundColor(Color.black)
-            .background(Color.green)
+            .background(shouldDisable ? Color.gray : Color.green)
             .clipShape(Rectangle())
+            .disabled(shouldDisable ? true : false)
     }
 }
