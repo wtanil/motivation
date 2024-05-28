@@ -14,10 +14,10 @@ struct ButtonViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .frame(width: 100, height: 100)
-            .foregroundColor(Color.black)
-            .background(shouldDisable ? Color.gray : Color.green)
-            .clipShape(Rectangle())
+            .tint(.green)
+            .buttonStyle(.bordered)
+            .controlSize(.large)
             .disabled(shouldDisable ? true : false)
+        
     }
 }

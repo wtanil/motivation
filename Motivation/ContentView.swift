@@ -16,16 +16,26 @@ struct ContentView: View {
     
     @State private var showingAlert = false
     @State private var alertType = true
+    @State var scale = 1.0
     
     var body: some View {
         
-        var shouldDisable = isToday(convertIntervalToDate(storedDate))
+        let shouldDisable = isToday(convertIntervalToDate(storedDate))
         VStack {
             Spacer()
             HStack {
                 VStack {
                     Text("Are you closer to your goal?")
-                    helperSection
+                        .font(.title)
+                        .scaleEffect(scale)
+                        .onAppear {
+                            let baseAnimation = Animation.easeInOut(duration: 2)
+                            let repeated = baseAnimation.repeatForever(autoreverses: true)
+                            withAnimation(repeated) {
+                                scale = 0.8
+                            }
+                        }
+//                    helperSection
                 }
                 
             }
@@ -34,14 +44,14 @@ struct ContentView: View {
                 Spacer()
                 Button { yesAction() } label: {
                     Text("Yes")
-                        .modifier(ButtonViewModifier(shouldDisable: shouldDisable))
                 }
+                .modifier(ButtonViewModifier(shouldDisable: shouldDisable))
                 
                 Spacer()
                 Button { noAction() } label: {
                     Text("No")
-                        .modifier(ButtonViewModifier(shouldDisable: shouldDisable))
                 }
+                .modifier(ButtonViewModifier(shouldDisable: shouldDisable))
                 
                 Spacer()
             }
