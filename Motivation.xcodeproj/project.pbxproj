@@ -16,7 +16,7 @@
 
 /* Begin PBXFileReference section */
 		AA4542472BFB9843006D6F1B /* ButtonViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewModifier.swift; sourceTree = "<group>"; };
-		AA557B912BF600B1006EFB7C /* Motivation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motivation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA557B912BF600B1006EFB7C /* Motivation: Small Steps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Motivation: Small Steps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA557B942BF600B1006EFB7C /* MotivationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationApp.swift; sourceTree = "<group>"; };
 		AA557B962BF600B1006EFB7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA557B982BF600B4006EFB7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		AA557B922BF600B1006EFB7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA557B912BF600B1006EFB7C /* Motivation.app */,
+				AA557B912BF600B1006EFB7C /* Motivation: Small Steps.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,7 +87,7 @@
 			);
 			name = Motivation;
 			productName = Motivation;
-			productReference = AA557B912BF600B1006EFB7C /* Motivation.app */;
+			productReference = AA557B912BF600B1006EFB7C /* Motivation: Small Steps.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -288,7 +288,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wtanil.Motivation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Motivation: Small Steps";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -320,7 +320,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wtanil.Motivation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Motivation: Small Steps";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
