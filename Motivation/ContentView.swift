@@ -35,7 +35,7 @@ struct ContentView: View {
                                 scale = 0.8
                             }
                         }
-//                    helperSection
+                    helperSection
                 }
                 
             }
