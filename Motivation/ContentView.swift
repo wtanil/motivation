@@ -81,13 +81,13 @@ struct ContentView: View {
     }
     
     private var yesAlert: Alert {
-        return Alert(title: Text("Title"), message: Text("Message"), dismissButton: .default(Text("Ok")))
+        return Alert(title: Text("Great Progress"), message: Text("Congratulations on your progress!"), dismissButton: .default(Text("Ok")))
     }
     
     private var noAlert: Alert {
-        Alert(title: Text("Title"),
-              message: Text("Message"),
-              primaryButton: .default(Text("Yes")) {
+        Alert(title: Text("It's Okay"),
+              message: Text("Even small steps count as progress. Keep going, and you'll achieve it soon!"),
+              primaryButton: .default(Text("Ok")) {
             self.countOfNo += 1
             self.totalCount += 1
             self.storedDate = convertDateToInterval(Date())
