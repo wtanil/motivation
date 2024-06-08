@@ -9,10 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // Stat
     @AppStorage("countOfYes") private var countOfYes = 0
     @AppStorage("countOfNo") private var countOfNo = 0
     @AppStorage("totalCount") private var totalCount = 0
     @AppStorage("storedDate") var storedDate = Double(0)
+    // Setting
+    @AppStorage("showCustomGoal") private var showCustomGoal = false
+    @AppStorage("isGoalPublic") private var isGoalPublic = false
+    @AppStorage("customGoal") private var customGoal = "test"
     
     @State private var showingAlert = false
     @State private var alertType = true
@@ -22,7 +27,18 @@ struct ContentView: View {
         
         let shouldDisable = isToday(convertIntervalToDate(storedDate))
         VStack {
+            
+            HStack {
+                Spacer()
+                Button {
+                    SettingView()
+                } label: {
+                    Text("Setting")
+                }
+            }
+            
             Spacer()
+            
             HStack {
                 VStack {
                     Text("Are you closer to your goal?")
@@ -36,6 +52,10 @@ struct ContentView: View {
                             }
                         }
 //                    helperSection
+                    if isGoalPublic {
+                        Text(customGoal)
+                    }
+                    
                 }
                 
             }
