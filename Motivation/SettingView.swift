@@ -34,15 +34,15 @@ struct SettingView: View {
 
                     HStack() {
                         Text("Hello, what do you want to change today?")
-                            .font(.title)
+                            .font(.title2)
                     }
                     
-                    Spacer(minLength: 8)
+//                    Spacer(minLength: 8)
                     
                     HStack {
                         VStack(alignment: .leading) {
                             
-                            helperSection
+//                            helperSection
                             
                             VStack(alignment: .leading) {
                                 Text("Do you want to write your goal?")

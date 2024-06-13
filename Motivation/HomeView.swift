@@ -45,8 +45,9 @@ struct HomeView: View {
                             }
                         }
                     
-                    if isGoalPublic {
+                    if showCustomGoal && isGoalPublic {
                         Text(customGoal)
+                            .padding(.top, 8)
                     }
                 }
             }
