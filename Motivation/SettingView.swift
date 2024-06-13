@@ -54,8 +54,7 @@ struct SettingView: View {
                                     } label: {
                                         Text("Yes")
                                     }
-                                    
-                                    .disabled(showCustomGoal)
+                                    .modifier(SettingButton(shouldDisable: showCustomGoal))
                                     Button {
                                         self.toTrigger.toggle()
                                         self.showCustomGoal = false
@@ -63,7 +62,7 @@ struct SettingView: View {
                                     } label: {
                                         Text("No")
                                     }
-                                    .disabled(!showCustomGoal)
+                                    .modifier(SettingButton(shouldDisable: !showCustomGoal))
                                 }
                                 
                                 if showCustomGoal {
@@ -79,7 +78,7 @@ struct SettingView: View {
                                             } label: {
                                                 Text("Yes")
                                             }
-                                            .disabled(isGoalPublic)
+                                            .modifier(SettingButton(shouldDisable: isGoalPublic))
                                             Button {
                                                 self.toTrigger.toggle()
                                                 self.isGoalPublic = false
@@ -87,7 +86,7 @@ struct SettingView: View {
                                             } label: {
                                                 Text("No")
                                             }
-                                            .disabled(!isGoalPublic)
+                                            .modifier(SettingButton(shouldDisable: !isGoalPublic))
                                         }
                                     }
                                     .padding(.leading)
@@ -107,7 +106,7 @@ struct SettingView: View {
                                     } label: {
                                         Text("Don't notify me.")
                                     }
-                                    .disabled(notificationType == 0)
+                                    .modifier(SettingButton(shouldDisable: notificationType == 0))
                                     // Type 1
                                     Button {
                                         self.toTrigger.toggle()
@@ -116,7 +115,7 @@ struct SettingView: View {
                                     } label: {
                                         Text("Notify me once a day, at night.")
                                     }
-                                    .disabled(notificationType == 1)
+                                    .modifier(SettingButton(shouldDisable: notificationType == 1))
                                     // Type 2
                                     Button {
                                         self.toTrigger.toggle()
@@ -125,7 +124,7 @@ struct SettingView: View {
                                     } label: {
                                         Text("Notify me twice a day, at noon and night.")
                                     }
-                                    .disabled(notificationType == 2)
+                                    .modifier(SettingButton(shouldDisable: notificationType == 2))
                                 }
                             }
                         }
