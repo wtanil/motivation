@@ -15,13 +15,23 @@ struct SettingView: View {
     @AppStorage("customGoal") private var customGoal = ""
     @AppStorage("notificationType") private var notificationType = 0
     
+    #warning("For development only")
+    @AppStorage("countOfYes") private var countOfYes = 0
+    @AppStorage("countOfNo") private var countOfNo = 0
+    @AppStorage("totalCount") private var totalCount = 0
+    @AppStorage("storedDate") var storedDate = Double(0)
+    
     @State private var toTrigger = false
     
     var body: some View {
         
+        
+        
         GeometryReader { geometry in
             ScrollView {
+                
                 VStack(alignment: .leading, spacing: 16) {
+
                     HStack() {
                         Text("Hello, what do you want to change today?")
                             .font(.title)
@@ -31,6 +41,8 @@ struct SettingView: View {
                     
                     HStack {
                         VStack(alignment: .leading) {
+                            
+                            helperSection
                             
                             VStack(alignment: .leading) {
                                 Text("Do you want to write your goal?")
@@ -125,6 +137,29 @@ struct SettingView: View {
             }
         }
         
+    }
+    
+    private var helperSection: some View {
+        
+        VStack(alignment: .leading) {
+            Text("yes: \(countOfYes) no: \(countOfNo) total: \(totalCount)")
+            Text("isToday: \(Date.isToday(Date.convertIntervalToDate(storedDate)) ? "true" : "false") lastDate: \(Date.convertIntervalToDate(storedDate))")
+            Button {
+                self.countOfNo = 0
+                self.countOfYes = 0
+                self.totalCount = 0
+                self.storedDate = Double(0)
+                self.showCustomGoal = false
+                self.isGoalPublic = false
+                self.customGoal = "test"
+                self.notificationType = 0
+                self.toTrigger.toggle()
+                
+            } label: {
+                Text("reset")
+            }
+        }
+        .padding()
         
     }
 }
