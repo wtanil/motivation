@@ -45,6 +45,20 @@ struct HomeView: View {
                             }
                         }
                     
+                    if showCustomGoal {
+                        Button {
+                            isGoalPublic.toggle()
+                            
+                        } label: {
+                            if isGoalPublic {
+                                Image(systemName: "eye.fill")
+                            } else {
+                                Image(systemName: "eye")
+                            }
+                            
+                        }
+                    }
+                    
                     if showCustomGoal && isGoalPublic {
                         Text(customGoal)
                             .padding(.top, 8)

@@ -41,7 +41,7 @@ struct SettingView: View {
                     
                     HStack {
                         VStack(alignment: .leading) {
-                            
+                        #warning("For development only")
 //                            helperSection
                             
                             VStack(alignment: .leading) {
@@ -138,6 +138,7 @@ struct SettingView: View {
         
     }
     
+    #warning("For development only")
     private var helperSection: some View {
         
         VStack(alignment: .leading) {
