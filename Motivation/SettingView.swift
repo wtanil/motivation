@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingView: View {
     
-    @AppStorage("showCustomGoal") private var showCustomGoal = false
+    @AppStorage("hasCustomGoal") private var hasCustomGoal = false
     @AppStorage("isGoalPublic") private var isGoalPublic = false
     @AppStorage("customGoal") private var customGoal = ""
     @AppStorage("notificationType") private var notificationType = 0
@@ -49,23 +49,22 @@ struct SettingView: View {
                                 HStack {
                                     Button {
                                         self.toTrigger.toggle()
-                                        self.showCustomGoal = true
-                                        
+                                        self.hasCustomGoal = true
                                     } label: {
                                         Text("Yes")
                                     }
-                                    .modifier(SettingButton(shouldDisable: showCustomGoal))
+                                    .modifier(SettingButton(shouldDisable: hasCustomGoal))
+                                    
                                     Button {
                                         self.toTrigger.toggle()
-                                        self.showCustomGoal = false
-                                        
+                                        self.hasCustomGoal = false
                                     } label: {
                                         Text("No")
                                     }
-                                    .modifier(SettingButton(shouldDisable: !showCustomGoal))
+                                    .modifier(SettingButton(shouldDisable: !hasCustomGoal))
                                 }
                                 
-                                if showCustomGoal {
+                                if hasCustomGoal {
                                     VStack(alignment: .leading) {
                                         TextField("Write your goal here", text: $customGoal)
                                             .textFieldStyle(.roundedBorder)
@@ -149,7 +148,7 @@ struct SettingView: View {
                 self.countOfYes = 0
                 self.totalCount = 0
                 self.storedDate = Double(0)
-                self.showCustomGoal = false
+                self.hasCustomGoal = false
                 self.isGoalPublic = false
                 self.customGoal = "test"
                 self.notificationType = 0

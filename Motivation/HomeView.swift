@@ -17,10 +17,9 @@ struct HomeView: View {
     @AppStorage("totalCount") private var totalCount = 0
     @AppStorage("storedDate") var storedDate = Double(0)
     // setting
-    @AppStorage("showCustomGoal") private var showCustomGoal = false
+    @AppStorage("hasCustomGoal") private var hasCustomGoal = false
     @AppStorage("isGoalPublic") private var isGoalPublic = false
-    @AppStorage("customGoal") private var customGoal = "test"
-    
+    @AppStorage("customGoal") private var customGoal = ""
     
     @State private var showingAlert = false
     @State private var alertType = true
@@ -45,23 +44,16 @@ struct HomeView: View {
                             }
                         }
                     
-                    if showCustomGoal {
-                        Button {
-                            isGoalPublic.toggle()
-                            
-                        } label: {
-                            if isGoalPublic {
-                                Image(systemName: "eye.fill")
-                            } else {
-                                Image(systemName: "eye")
-                            }
-                            
+                    if hasCustomGoal && isGoalPublic {
+                        if customGoal.isEmpty {
+                            Text("Hi, you can write your goal in Setting.")
+                                .padding(.top, 8)
+                                .font(.caption)
+                        } else {
+                            Text(customGoal)
+                                .padding(.top, 8)
                         }
-                    }
-                    
-                    if showCustomGoal && isGoalPublic {
-                        Text(customGoal)
-                            .padding(.top, 8)
+                        
                     }
                 }
             }
