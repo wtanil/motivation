@@ -53,7 +53,8 @@ struct SettingView: View {
                                     } label: {
                                         Text("Yes")
                                     }
-                                    .modifier(SettingButton(shouldDisable: hasCustomGoal))
+                                    .modifier(SettingButton())
+                                    .disabled(hasCustomGoal)
                                     
                                     Button {
                                         self.toTrigger.toggle()
@@ -61,13 +62,15 @@ struct SettingView: View {
                                     } label: {
                                         Text("No")
                                     }
-                                    .modifier(SettingButton(shouldDisable: !hasCustomGoal))
+                                    .modifier(SettingButton())
+                                    .disabled(!hasCustomGoal)
                                 }
                                 
                                 if hasCustomGoal {
                                     VStack(alignment: .leading) {
                                         TextField("Write your goal here", text: $customGoal)
                                             .textFieldStyle(.roundedBorder)
+                                            .foregroundColor(.green)
                                         Text("Do you want to show your goal by default?")
                                         HStack {
                                             Button {
@@ -77,7 +80,8 @@ struct SettingView: View {
                                             } label: {
                                                 Text("Yes")
                                             }
-                                            .modifier(SettingButton(shouldDisable: isGoalPublic))
+                                            .modifier(SettingButton())
+                                            .disabled(isGoalPublic)
                                             Button {
                                                 self.toTrigger.toggle()
                                                 self.isGoalPublic = false
@@ -85,7 +89,9 @@ struct SettingView: View {
                                             } label: {
                                                 Text("No")
                                             }
-                                            .modifier(SettingButton(shouldDisable: !isGoalPublic))
+                                            .modifier(SettingButton())
+                                            .disabled(!isGoalPublic)
+                                            
                                         }
                                     }
                                     .padding(.leading)
@@ -105,7 +111,8 @@ struct SettingView: View {
                                     } label: {
                                         Text("Don't notify me.")
                                     }
-                                    .modifier(SettingButton(shouldDisable: notificationType == 0))
+                                    .modifier(SettingButton())
+                                    .disabled(notificationType == 0)
                                     // Type 1
                                     Button {
                                         self.toTrigger.toggle()
@@ -114,7 +121,8 @@ struct SettingView: View {
                                     } label: {
                                         Text("Notify me once a day, at night.")
                                     }
-                                    .modifier(SettingButton(shouldDisable: notificationType == 1))
+                                    .modifier(SettingButton())
+                                    .disabled(notificationType == 1)
                                     // Type 2
                                     Button {
                                         self.toTrigger.toggle()
@@ -123,7 +131,8 @@ struct SettingView: View {
                                     } label: {
                                         Text("Notify me twice a day, at noon and night.")
                                     }
-                                    .modifier(SettingButton(shouldDisable: notificationType == 2))
+                                    .modifier(SettingButton())
+                                    .disabled(notificationType == 2)
                                 }
                             }
                         }

@@ -11,14 +11,13 @@ import SwiftUI
 
 struct SettingButton: ViewModifier {
     
-    let shouldDisable: Bool
+    @Environment(\.isEnabled) var isEnabled
     
     func body(content: Content) -> some View {
         content
-            .tint(.green)
-            .buttonStyle(.bordered)
-            .controlSize(.regular)
-            .disabled(shouldDisable ? true : false)
-        
+            .foregroundColor(.green)
+            .padding()
+            .background(isEnabled ? .clear : .green.opacity(0.1))
+            .cornerRadius(16)
     }
 }
