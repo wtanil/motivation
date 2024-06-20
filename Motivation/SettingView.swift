@@ -69,8 +69,7 @@ struct SettingView: View {
                                 if hasCustomGoal {
                                     VStack(alignment: .leading) {
                                         TextField("Write your goal here", text: $customGoal)
-                                            .textFieldStyle(.roundedBorder)
-                                            .foregroundColor(.green)
+                                            .modifier(SettingTextField())
                                         Text("Do you want to show your goal by default?")
                                         HStack {
                                             Button {

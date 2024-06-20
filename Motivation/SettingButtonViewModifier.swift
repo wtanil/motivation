@@ -16,8 +16,8 @@ struct SettingButton: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(.green)
-            .padding()
-            .background(isEnabled ? .clear : .green.opacity(0.1))
+            .padding(8)
+            .background(isEnabled ? .clear : .green.opacity(0.3))
             .cornerRadius(16)
     }
 }
