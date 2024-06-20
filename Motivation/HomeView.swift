@@ -65,13 +65,15 @@ struct HomeView: View {
                 Button { yesAction() } label: {
                     Text("Yes")
                 }
-                .modifier(HomeButton(shouldDisable: shouldDisable))
+                .modifier(HomeButton())
+                .disabled(shouldDisable)
                 
                 Spacer()
                 Button { noAction() } label: {
                     Text("No")
                 }
-                .modifier(HomeButton(shouldDisable: shouldDisable))
+                .modifier(HomeButton())
+                .disabled(shouldDisable)
                 
                 Spacer()
             }

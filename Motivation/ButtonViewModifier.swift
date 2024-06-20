@@ -10,14 +10,11 @@ import SwiftUI
 
 struct HomeButton: ViewModifier {
     
-    let shouldDisable: Bool
-    
     func body(content: Content) -> some View {
         content
             .tint(.green)
             .buttonStyle(.bordered)
             .controlSize(.large)
-            .disabled(shouldDisable ? true : false)
         
     }
 }

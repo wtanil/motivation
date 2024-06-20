@@ -25,8 +25,6 @@ struct SettingView: View {
     
     var body: some View {
         
-        
-        
         GeometryReader { geometry in
             ScrollView {
                 
@@ -37,103 +35,16 @@ struct SettingView: View {
                             .font(.title2)
                     }
                     
-//                    Spacer(minLength: 8)
-                    
                     HStack {
                         VStack(alignment: .leading) {
                         #warning("For development only")
 //                            helperSection
                             
-                            VStack(alignment: .leading) {
-                                Text("Do you want to write your goal?")
-                                HStack {
-                                    Button {
-                                        self.toTrigger.toggle()
-                                        self.hasCustomGoal = true
-                                    } label: {
-                                        Text("Yes")
-                                    }
-                                    .modifier(SettingButton())
-                                    .disabled(hasCustomGoal)
-                                    
-                                    Button {
-                                        self.toTrigger.toggle()
-                                        self.hasCustomGoal = false
-                                    } label: {
-                                        Text("No")
-                                    }
-                                    .modifier(SettingButton())
-                                    .disabled(!hasCustomGoal)
-                                }
-                                
-                                if hasCustomGoal {
-                                    VStack(alignment: .leading) {
-                                        TextField("Write your goal here", text: $customGoal)
-                                            .modifier(SettingTextField())
-                                        Text("Do you want to show your goal by default?")
-                                        HStack {
-                                            Button {
-                                                self.toTrigger.toggle()
-                                                self.isGoalPublic = true
-                                                
-                                            } label: {
-                                                Text("Yes")
-                                            }
-                                            .modifier(SettingButton())
-                                            .disabled(isGoalPublic)
-                                            Button {
-                                                self.toTrigger.toggle()
-                                                self.isGoalPublic = false
-                                                
-                                            } label: {
-                                                Text("No")
-                                            }
-                                            .modifier(SettingButton())
-                                            .disabled(!isGoalPublic)
-                                            
-                                        }
-                                    }
-                                    .padding(.leading)
-                                    
-                                }
-                            }
+                            customGoalSetting
+                            
                             Spacer(minLength: 16)
                             
-                            VStack(alignment: .leading) {
-                                Text("How do you want to be reminded?")
-                                VStack(alignment: .leading) {
-                                    // Type 0
-                                    Button {
-                                        self.toTrigger.toggle()
-                                        self.notificationType = 0
-                                        
-                                    } label: {
-                                        Text("Don't notify me.")
-                                    }
-                                    .modifier(SettingButton())
-                                    .disabled(notificationType == 0)
-                                    // Type 1
-                                    Button {
-                                        self.toTrigger.toggle()
-                                        self.notificationType = 1
-                                        
-                                    } label: {
-                                        Text("Notify me once a day, at night.")
-                                    }
-                                    .modifier(SettingButton())
-                                    .disabled(notificationType == 1)
-                                    // Type 2
-                                    Button {
-                                        self.toTrigger.toggle()
-                                        self.notificationType = 2
-                                        
-                                    } label: {
-                                        Text("Notify me twice a day, at noon and night.")
-                                    }
-                                    .modifier(SettingButton())
-                                    .disabled(notificationType == 2)
-                                }
-                            }
+                            notificationSetting
                         }
                         Spacer()
                     }
@@ -143,6 +54,100 @@ struct SettingView: View {
             }
         }
         
+    }
+    
+    private var customGoalSetting: some View {
+        VStack(alignment: .leading) {
+            Text("Do you want to write your goal?")
+            HStack {
+                Button {
+                    self.toTrigger.toggle()
+                    self.hasCustomGoal = true
+                } label: {
+                    Text("Yes")
+                }
+                .modifier(SettingButton())
+                .disabled(hasCustomGoal)
+                
+                Button {
+                    self.toTrigger.toggle()
+                    self.hasCustomGoal = false
+                } label: {
+                    Text("No")
+                }
+                .modifier(SettingButton())
+                .disabled(!hasCustomGoal)
+            }
+            
+            if hasCustomGoal {
+                VStack(alignment: .leading) {
+                    TextField("Write your goal here", text: $customGoal)
+                        .modifier(SettingTextField())
+                    Text("Do you want to show your goal by default?")
+                    HStack {
+                        Button {
+                            self.toTrigger.toggle()
+                            self.isGoalPublic = true
+                            
+                        } label: {
+                            Text("Yes")
+                        }
+                        .modifier(SettingButton())
+                        .disabled(isGoalPublic)
+                        Button {
+                            self.toTrigger.toggle()
+                            self.isGoalPublic = false
+                            
+                        } label: {
+                            Text("No")
+                        }
+                        .modifier(SettingButton())
+                        .disabled(!isGoalPublic)
+                        
+                    }
+                }
+                .padding(.leading)
+                
+            }
+        }
+    }
+    
+    private var notificationSetting: some View {
+        VStack(alignment: .leading) {
+            Text("How do you want to be reminded?")
+            VStack(alignment: .leading) {
+                // Type 0
+                Button {
+                    self.toTrigger.toggle()
+                    self.notificationType = 0
+                    
+                } label: {
+                    Text("Don't notify me.")
+                }
+                .modifier(SettingButton())
+                .disabled(notificationType == 0)
+                // Type 1
+                Button {
+                    self.toTrigger.toggle()
+                    self.notificationType = 1
+                    
+                } label: {
+                    Text("Notify me once a day, at night.")
+                }
+                .modifier(SettingButton())
+                .disabled(notificationType == 1)
+                // Type 2
+                Button {
+                    self.toTrigger.toggle()
+                    self.notificationType = 2
+                    
+                } label: {
+                    Text("Notify me twice a day, at noon and night.")
+                }
+                .modifier(SettingButton())
+                .disabled(notificationType == 2)
+            }
+        }
     }
     
     #warning("For development only")
