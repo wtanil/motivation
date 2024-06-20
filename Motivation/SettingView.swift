@@ -28,7 +28,7 @@ struct SettingView: View {
         GeometryReader { geometry in
             ScrollView {
                 
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: 24) {
 
                     HStack() {
                         Text("Hello, what do you want to change today?")
@@ -38,11 +38,11 @@ struct SettingView: View {
                     HStack {
                         VStack(alignment: .leading) {
                         #warning("For development only")
-//                            helperSection
+                            helperSection
                             
                             customGoalSetting
                             
-                            Spacer(minLength: 16)
+                            Spacer(minLength: 24)
                             
                             notificationSetting
                         }
@@ -163,7 +163,7 @@ struct SettingView: View {
                 self.storedDate = Double(0)
                 self.hasCustomGoal = false
                 self.isGoalPublic = false
-                self.customGoal = "test"
+                self.customGoal = ""
                 self.notificationType = 0
                 self.toTrigger.toggle()
                 
