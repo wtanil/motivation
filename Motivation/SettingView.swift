@@ -38,7 +38,7 @@ struct SettingView: View {
                     HStack {
                         VStack(alignment: .leading) {
                         #warning("For development only")
-                            helperSection
+//                            helperSection
                             
                             customGoalSetting
                             
