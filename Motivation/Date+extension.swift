@@ -35,4 +35,15 @@ extension Date {
         Date(timeIntervalSinceReferenceDate: timeInterval)
     }
     
+    // by default return Today 22.00
+    static func getTodayDate(_ hour: Int = 20) -> Date {
+        let calendar = Calendar.current
+        let startOfDate = Calendar.current.startOfDay(for: Date())
+        return calendar.date(byAdding: .hour, value: hour, to: startOfDate) ?? Date()
+    }
+    
+    static func getDateComponent(from date: Date) -> DateComponents {
+        return Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+    }
+    
 }

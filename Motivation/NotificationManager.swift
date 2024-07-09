@@ -11,7 +11,7 @@ import UserNotifications
 
 class NotificationManager {
     
-    func requestNotification() {
+    func requestAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
                 print("success")
@@ -29,19 +29,17 @@ class NotificationManager {
         }
     }
     
-    func scheduleNotification(message: NotificationContent) {
+    func scheduleNotification(identifier: String, message: NotificationContent) {
         let content = UNMutableNotificationContent()
         content.title = message.title
-        content.subtitle = message.subtitle
+//        content.subtitle = message.subtitle
         content.body = message.body
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: Date.getDateComponent(from: Date.getTodayDate()), repeats: false)
         
-        // trigger
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request)
-        
     }
     
     func removeNotification() {

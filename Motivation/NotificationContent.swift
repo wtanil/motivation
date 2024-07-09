@@ -10,6 +10,6 @@ import Foundation
 
 struct NotificationContent {
     var title: String
-    var subtitle: String
+//    var subtitle: String
     var body: String
 }
